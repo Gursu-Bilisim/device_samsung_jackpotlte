@@ -18,45 +18,45 @@ vendor/etc/default_volume_tables.xml
 # Source: exynos7885-dev/proprietary_vendor_samsung_jackpotlte (lineage-18.1),
 # from A750FNXXU5CVG2; A530FXXULCUK6 has no audio.primary.exynos7885.so.
 # Uses the common libaudioroute.exynos7885 / libtinyalsa.exynos7885 (blob_fixup)
-vendor/lib/hw/audio.primary.exynos7885.so;DISABLE_CHECKELF
+vendor/lib/hw/audio.primary.exynos7885.so;DISABLE_DEPS
 
 # Camera
 # Source: exynos7885-dev/proprietary_vendor_samsung_jackpotlte (lineage-18.1),
 # from SC02LOMS1CVK2 (Galaxy Feel2, Exynos 7885). A530FXXULCUK6 has no legacy
 # camera.exynos7885.so module (stock uses the Samsung camera provider 2.4).
-vendor/lib/hw/camera.exynos7885.so;DISABLE_CHECKELF
-vendor/lib/libOpenCv.camera.samsung.so;DISABLE_CHECKELF
-vendor/lib/libexynoscamera.so;DISABLE_CHECKELF
-vendor/lib/libexynoscamera3.so;DISABLE_CHECKELF
-vendor/lib/libhifills.so;DISABLE_CHECKELF
-vendor/lib/libhifills_interface.so;DISABLE_CHECKELF
-vendor/lib/libremosaic_daemon.so;DISABLE_CHECKELF
-vendor/lib/libremosaic_tuning.so;DISABLE_CHECKELF
-vendor/lib/libsaiv_BeautySolutionVideo.so;DISABLE_CHECKELF
-vendor/lib/libswldc_capture_core.camera.samsung.so;DISABLE_CHECKELF
-vendor/lib/libuniapi.so;DISABLE_CHECKELF
-vendor/lib/libuniplugin.so;DISABLE_CHECKELF
-vendor/lib/libvdis_core.so;DISABLE_CHECKELF
-vendor/lib/libvdis_interface.so;DISABLE_CHECKELF
-vendor/lib/libvideobeauty_interface.so;DISABLE_CHECKELF
-vendor/lib/libxcv.camera.samsung.so;DISABLE_CHECKELF
-vendor/lib64/hw/camera.exynos7885.so;DISABLE_CHECKELF
-vendor/lib64/libOpenCv.camera.samsung.so;DISABLE_CHECKELF
-vendor/lib64/libexynoscamera.so;DISABLE_CHECKELF
-vendor/lib64/libexynoscamera3.so;DISABLE_CHECKELF
-vendor/lib64/libhifills.so;DISABLE_CHECKELF
-vendor/lib64/libhifills_interface.so;DISABLE_CHECKELF
-vendor/lib64/libremosaic_daemon.so;DISABLE_CHECKELF
-vendor/lib64/libremosaic_tuning.so;DISABLE_CHECKELF
-vendor/lib64/libremosaiclib_s5k3p8sp_gpu.so;DISABLE_CHECKELF
-vendor/lib64/libsaiv_BeautySolutionVideo.so;DISABLE_CHECKELF
-vendor/lib64/libswldc_capture_core.camera.samsung.so;DISABLE_CHECKELF
-vendor/lib64/libuniapi.so;DISABLE_CHECKELF
-vendor/lib64/libuniplugin.so;DISABLE_CHECKELF
-vendor/lib64/libvdis_core.so;DISABLE_CHECKELF
-vendor/lib64/libvdis_interface.so;DISABLE_CHECKELF
-vendor/lib64/libvideobeauty_interface.so;DISABLE_CHECKELF
-vendor/lib64/libxcv.camera.samsung.so;DISABLE_CHECKELF
+vendor/lib/hw/camera.exynos7885.so;DISABLE_DEPS
+vendor/lib/libOpenCv.camera.samsung.so;DISABLE_DEPS
+vendor/lib/libexynoscamera.so;DISABLE_DEPS
+vendor/lib/libexynoscamera3.so;DISABLE_DEPS
+vendor/lib/libhifills.so;DISABLE_DEPS
+vendor/lib/libhifills_interface.so;DISABLE_DEPS
+vendor/lib/libremosaic_daemon.so;DISABLE_DEPS
+vendor/lib/libremosaic_tuning.so;DISABLE_DEPS
+vendor/lib/libsaiv_BeautySolutionVideo.so;DISABLE_DEPS
+vendor/lib/libswldc_capture_core.camera.samsung.so;DISABLE_DEPS
+vendor/lib/libuniapi.so;DISABLE_DEPS
+vendor/lib/libuniplugin.so;DISABLE_DEPS
+vendor/lib/libvdis_core.so;DISABLE_DEPS
+vendor/lib/libvdis_interface.so;DISABLE_DEPS
+vendor/lib/libvideobeauty_interface.so;DISABLE_DEPS
+vendor/lib/libxcv.camera.samsung.so;DISABLE_DEPS
+vendor/lib64/hw/camera.exynos7885.so;DISABLE_DEPS
+vendor/lib64/libOpenCv.camera.samsung.so;DISABLE_DEPS
+vendor/lib64/libexynoscamera.so;DISABLE_DEPS
+vendor/lib64/libexynoscamera3.so;DISABLE_DEPS
+vendor/lib64/libhifills.so;DISABLE_DEPS
+vendor/lib64/libhifills_interface.so;DISABLE_DEPS
+vendor/lib64/libremosaic_daemon.so;DISABLE_DEPS
+vendor/lib64/libremosaic_tuning.so;DISABLE_DEPS
+vendor/lib64/libremosaiclib_s5k3p8sp_gpu.so;DISABLE_DEPS
+vendor/lib64/libsaiv_BeautySolutionVideo.so;DISABLE_DEPS
+vendor/lib64/libswldc_capture_core.camera.samsung.so;DISABLE_DEPS
+vendor/lib64/libuniapi.so;DISABLE_DEPS
+vendor/lib64/libuniplugin.so;DISABLE_DEPS
+vendor/lib64/libvdis_core.so;DISABLE_DEPS
+vendor/lib64/libvdis_interface.so;DISABLE_DEPS
+vendor/lib64/libvideobeauty_interface.so;DISABLE_DEPS
+vendor/lib64/libxcv.camera.samsung.so;DISABLE_DEPS
 
 # Camera firmware
 vendor/firmware/fimc_is_lib.bin
