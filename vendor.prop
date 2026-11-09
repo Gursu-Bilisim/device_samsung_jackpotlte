@@ -1,0 +1,65 @@
+# Copy of device/samsung/exynos7885-common/vendor.prop (fifteen, c5c3d6c),
+# which BoardConfig.mk filters out; jackpotlte changes are marked.
+
+## FRP
+ro.frp.pst=/dev/block/platform/13500000.dwmmc0/by-name/PERSISTENT
+
+## OMX
+# Set csc support in OMX
+# If not set or set to 0, OMX will only use BT.601 colorspace.
+ro.vendor.cscsupported=1
+
+## OpenGLES
+ro.opengles.version=196610
+
+## RIL
+vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
+vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
+
+# Wifi direct
+wifi.direct.interface=p2p0
+
+# Hardware
+ro.hardware.egl=mali
+
+## SoC
+ro.soc.manufacturer=samsung
+ro.soc.model=exynos7885
+
+## Audio
+ro.config.vc_call_vol_steps=7
+ro.config.alarm_vol_steps=15
+
+# Bluetooth
+bluetooth.device.class_of_device=90,2,12
+bluetooth.profile.a2dp.source.enabled=true
+bluetooth.profile.asha.central.enabled=true
+bluetooth.profile.avrcp.target.enabled=true
+bluetooth.profile.bas.client.enabled=true
+bluetooth.profile.gatt.enabled=true
+bluetooth.profile.hfp.ag.enabled=true
+bluetooth.profile.hid.device.enabled=true
+bluetooth.profile.hid.host.enabled=true
+bluetooth.profile.map.server.enabled=true
+bluetooth.profile.opp.enabled=true
+bluetooth.profile.pan.nap.enabled=true
+bluetooth.profile.pan.panu.enabled=true
+bluetooth.profile.pbap.server.enabled=true
+bluetooth.profile.sap.server.enabled=true
+
+## Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
+## Power HAL
+vendor.powerhal.disp.idle_support=false
+
+## Vibrator HAL
+ro.vendor.vibrator_hal.click_duration=75
+ro.vendor.vibrator_hal.tick_duration=65
+ro.vendor.vibrator_hal.texture_tick_duration=60
+
+## jackpotlte
+bluetooth.device.default_name=Galaxy A8 (2018)
+# Keymaster 3.0 HAL module keystore.mdfpp.so (stock A530FXXULCUK6 value)
+ro.hardware.keystore=mdfpp
+ro.vendor.fingerprint.type=rear

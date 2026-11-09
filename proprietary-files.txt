@@ -1,0 +1,157 @@
+# Blobs for Samsung Galaxy A8 2018 (jackpotlte), all from the stock
+# A530FXXULCUK6 firmware (BTU), the same build as the bootloader on the phone.
+# Started from the LineageOS 18.1 jackpotlte list (exynos7885-dev,
+# d6885b5); hash pins dropped because that list took audio and camera
+# from other firmwares (A750FNXXU5CVG2, SC02LOMS1CVK2).
+# Libraries that vendor/samsung/exynos7885-common already installs as
+# modules (a30 Android 11 audio and sensor helpers) are left out to avoid
+# duplicate install rules.
+
+# Audio configs
+etc/mixer_gains.xml:vendor/etc/mixer_gains.xml
+etc/mixer_paths.xml:vendor/etc/mixer_paths.xml
+vendor/etc/SoundBoosterParam.txt
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/default_volume_tables.xml
+
+# Audio HAL
+# Uses the common libaudioroute.exynos7885 / libtinyalsa.exynos7885 (blob_fixup)
+vendor/lib/hw/audio.primary.exynos7885.so
+
+# Camera
+vendor/lib/hw/camera.exynos7885.so
+vendor/lib/libOpenCv.camera.samsung.so
+vendor/lib/libexynoscamera.so
+vendor/lib/libexynoscamera3.so
+vendor/lib/libhifills.so
+vendor/lib/libhifills_interface.so
+vendor/lib/libremosaic_daemon.so
+vendor/lib/libremosaic_tuning.so
+vendor/lib/libremosaiclib_s5k3p8sp_gpu.so
+vendor/lib/libsaiv_BeautySolutionVideo.so
+vendor/lib/libswldc_capture_core.camera.samsung.so
+vendor/lib/libuniapi.so
+vendor/lib/libuniplugin.so
+vendor/lib/libvdis_core.so
+vendor/lib/libvdis_interface.so
+vendor/lib/libvideobeauty_interface.so
+vendor/lib/libxcv.camera.samsung.so
+vendor/lib64/hw/camera.exynos7885.so
+vendor/lib64/libOpenCv.camera.samsung.so
+vendor/lib64/libexynoscamera.so
+vendor/lib64/libexynoscamera3.so
+vendor/lib64/libhifills.so
+vendor/lib64/libhifills_interface.so
+vendor/lib64/libremosaic_daemon.so
+vendor/lib64/libremosaic_tuning.so
+vendor/lib64/libremosaiclib_s5k3p8sp_gpu.so
+vendor/lib64/libsaiv_BeautySolutionVideo.so
+vendor/lib64/libswldc_capture_core.camera.samsung.so
+vendor/lib64/libuniapi.so
+vendor/lib64/libuniplugin.so
+vendor/lib64/libvdis_core.so
+vendor/lib64/libvdis_interface.so
+vendor/lib64/libvideobeauty_interface.so
+vendor/lib64/libxcv.camera.samsung.so
+
+# Camera firmware
+vendor/firmware/fimc_is_lib.bin
+vendor/firmware/fimc_is_rta.bin
+vendor/firmware/setfile_2p6.bin
+vendor/firmware/setfile_3p8sp.bin
+
+# Fingerprint
+vendor/lib/libbauthserver.so
+vendor/lib/libbauthtzcommon.so
+vendor/lib/libegis_fp_normal_sensor_test.so
+vendor/lib/libgf_in_system_lib.so
+vendor/lib/libqfp_sensortest.so
+vendor/lib/libsynaFpSensorTestNwd.so
+vendor/lib64/libbauthserver.so
+vendor/lib64/libbauthtzcommon.so
+vendor/lib64/libegis_fp_normal_sensor_test.so
+vendor/lib64/libgf_in_system_lib.so
+vendor/lib64/libqfp_sensortest.so
+vendor/lib64/libsynaFpSensorTestNwd.so
+
+# Firmware
+vendor/firmware/AP_AUDIO_SLSI.bin
+vendor/firmware/APBargeIn_AUDIO_SLSI.bin
+vendor/firmware/calliope_dram.bin
+vendor/firmware/calliope_sram.bin
+vendor/firmware/dbmd4_va_fw.bin
+vendor/firmware/mfc_fw.bin
+vendor/firmware/setfile_sr846_front.bin
+vendor/firmware/Tfa9872.cnt
+vendor/firmware/tfadsp.bin
+
+# Gatekeeper
+vendor/lib/hw/gatekeeper.exynos7885.so
+vendor/lib64/hw/gatekeeper.exynos7885.so
+
+# Keymaster 3.0 (keystore.mdfpp.so, loaded by android.hardware.keymaster@3.0-impl)
+lib/libskeymaster.so:vendor/lib/libskeymaster.so
+lib64/libskeymaster.so:vendor/lib64/libskeymaster.so
+vendor/lib/libskeymaster3device.so
+vendor/lib64/hw/keystore.mdfpp.so
+vendor/lib64/libkeymaster_helper.so
+vendor/lib64/libkeymaster_mdfpp.so
+vendor/lib64/libskeymaster3device.so
+
+# MobiCore (Trustonic TEE)
+vendor/bin/mcDriverDaemon
+vendor/etc/init/mobicore.rc
+vendor/lib/libMcClient.so
+vendor/lib64/libMcClient.so
+vendor/bin/hw/vendor.trustonic.tee@1.0-service
+vendor/etc/init/vendor.trustonic.tee@1.0-service.rc
+vendor/bin/hw/vendor.trustonic.teeregistry@1.0-service
+vendor/etc/init/vendor.trustonic.teeregistry@1.0-service.rc
+app/mcRegistry/ffffffff000000000000000000000004.tlbin:vendor/app/mcRegistry/ffffffff000000000000000000000004.tlbin
+app/mcRegistry/ffffffff00000000000000000000000c.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000000c.tlbin
+app/mcRegistry/ffffffff00000000000000000000000d.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000000d.tlbin
+app/mcRegistry/ffffffff00000000000000000000003e.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000003e.tlbin
+app/mcRegistry/ffffffffd00000000000000000000004.tlbin:vendor/app/mcRegistry/ffffffffd00000000000000000000004.tlbin
+vendor/app/mcRegistry/00060308060501020000000000000000.tlbin
+vendor/app/mcRegistry/07010000000000000000000000000000.tlbin
+vendor/app/mcRegistry/0706000000000000000000000000004d.tlbin
+vendor/app/mcRegistry/08130000000000000000000000000000.tlbin
+vendor/app/mcRegistry/FFFFFFFF000000000000000000000001.drbin
+vendor/app/mcRegistry/ffffffff000000000000000000000005.tlbin
+vendor/app/mcRegistry/ffffffff00000000000000000000000a.tlbin
+vendor/app/mcRegistry/ffffffff00000000000000000000000f.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000012.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000013.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000016.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000017.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000019.tlbin
+vendor/app/mcRegistry/ffffffff00000000000000000000002e.tlbin
+vendor/app/mcRegistry/ffffffff00000000000000000000002f.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000030.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000038.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000041.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000045.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000059.tlbin
+vendor/app/mcRegistry/ffffffff000000000000000000000060.tlbin
+vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
+vendor/app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
+vendor/app/mcRegistry/ffffffffd00000000000000000000014.tlbin
+vendor/app/mcRegistry/ffffffffd00000000000000000000016.tlbin
+vendor/app/mcRegistry/ffffffffd00000000000000000000017.tlbin
+vendor/app/mcRegistry/ffffffffd00000000000000000000045.drbin
+vendor/app/mcRegistry/fffffffff0000000000000000000001b.tlbin
+
+# Widevine (Trustonic)
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/lib/liboemcrypto.so
+vendor/lib/libwvhidl.so
+vendor/lib/mediadrm/libwvdrmengine.so
+
+# NFC firmware
+vendor/etc/nfc/sec_s3nrn81_rfreg.bin
+vendor/firmware/nfc/sec_s3nrn81_firmware.bin
+
+# Sensors
+vendor/lib/hw/sensors.universal7885.so:vendor/lib/hw/sensors.exynos7885.so
+vendor/lib64/hw/sensors.universal7885.so:vendor/lib64/hw/sensors.exynos7885.so

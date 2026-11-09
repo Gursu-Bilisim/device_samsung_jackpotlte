@@ -1,0 +1,25 @@
+# Android fstab file for Samsung Galaxy A8 2018 (jackpotlte), Treble layout:
+# VENDOR, PRODUCT and ODM are separate partitions, there is no DTBO partition.
+# Partition names are upper case. /data is not encrypted, as on the current ROM.
+#
+# noauto_da_alloc is left out of /data, /metadata and /cache on purpose: with the stock kernel's writeback
+# defaults it left freshly written files empty after a watchdog reset
+# (claude/jackpotlte-baikalos-a15.md, section 5).
+#
+#<src>                                                  <mnt_point>      <type> <mnt_flags and options>                                   <fs_mgr_flags>
+
+# system and vendor are also described in the kernel device tree (firmware/android/fstab)
+/dev/block/platform/13500000.dwmmc0/by-name/SYSTEM      /system          ext4   ro                                                        wait,first_stage_mount
+/dev/block/platform/13500000.dwmmc0/by-name/VENDOR      /vendor          ext4   ro                                                        wait,first_stage_mount
+/dev/block/platform/13500000.dwmmc0/by-name/OMR         /metadata        ext4   noatime,nosuid,nodev,discard,journal_checksum,data=ordered,errors=panic   wait,first_stage_mount,formattable,check
+
+/dev/block/platform/13500000.dwmmc0/by-name/CACHE       /cache           ext4   nosuid,nodev,noatime,barrier=1                            wait,check
+/dev/block/platform/13500000.dwmmc0/by-name/USERDATA    /data            ext4   nosuid,nodev,noatime,barrier=1,discard                    wait,check,reservedsize=128M
+
+/dev/block/platform/13500000.dwmmc0/by-name/EFS         /mnt/vendor/efs  ext4   noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic   wait,check
+/dev/block/platform/13500000.dwmmc0/by-name/CPEFS       /mnt/vendor/cpefs ext4  noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic   wait,check,nofail
+/dev/block/platform/13500000.dwmmc0/by-name/BOOT        /boot            emmc   defaults                                                  recoveryonly
+/dev/block/platform/13500000.dwmmc0/by-name/RECOVERY    /recovery        emmc   defaults                                                  recoveryonly
+
+/devices/platform/13550000.dwmmc2/mmc_host/mmc1*        auto             auto   defaults                                                  voldmanaged=sdcard:auto
+/devices/platform/13600000.usb/13600000.dwc3*           auto             auto   defaults                                                  voldmanaged=usb:auto

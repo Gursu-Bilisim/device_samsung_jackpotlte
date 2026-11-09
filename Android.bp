@@ -1,0 +1,41 @@
+//
+// SPDX-FileCopyrightText: 2026 Gursu Bilisim
+// SPDX-License-Identifier: Apache-2.0
+//
+
+soong_namespace {
+}
+
+// The bootloader passes androidboot.hardware=samsungexynos7885, so init
+// looks for fstab.samsungexynos7885 and init.samsungexynos7885.rc.
+// Module names follow TARGET_SOC (exynos7885) as in exynos7885-common.
+
+prebuilt_etc {
+    name: "fstab.exynos7885",
+    src: "rootdir/etc/fstab.samsungexynos7885",
+    filename: "fstab.samsungexynos7885",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.exynos7885.rc",
+    src: "rootdir/etc/init.samsungexynos7885.rc",
+    filename: "init.samsungexynos7885.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.exynos7885.usb.rc",
+    src: "rootdir/etc/init.samsungexynos7885.usb.rc",
+    filename: "init.samsungexynos7885.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.jackpotlte.rc",
+    src: "rootdir/etc/ueventd.rc",
+    filename: "ueventd.rc",
+    vendor: true,
+}
