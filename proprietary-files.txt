@@ -32,7 +32,6 @@ vendor/lib/libhifills.so;DISABLE_CHECKELF
 vendor/lib/libhifills_interface.so;DISABLE_CHECKELF
 vendor/lib/libremosaic_daemon.so;DISABLE_CHECKELF
 vendor/lib/libremosaic_tuning.so;DISABLE_CHECKELF
-vendor/lib/libremosaiclib_s5k3p8sp_gpu.so;DISABLE_CHECKELF
 vendor/lib/libsaiv_BeautySolutionVideo.so;DISABLE_CHECKELF
 vendor/lib/libswldc_capture_core.camera.samsung.so;DISABLE_CHECKELF
 vendor/lib/libuniapi.so;DISABLE_CHECKELF
