@@ -65,18 +65,18 @@ vendor/firmware/setfile_2p6.bin
 vendor/firmware/setfile_3p8sp.bin
 
 # Fingerprint
-vendor/lib/libbauthserver.so
-vendor/lib/libbauthtzcommon.so
-vendor/lib/libegis_fp_normal_sensor_test.so
-vendor/lib/libgf_in_system_lib.so
-vendor/lib/libqfp_sensortest.so
-vendor/lib/libsynaFpSensorTestNwd.so
-vendor/lib64/libbauthserver.so
-vendor/lib64/libbauthtzcommon.so
-vendor/lib64/libegis_fp_normal_sensor_test.so
-vendor/lib64/libgf_in_system_lib.so
-vendor/lib64/libqfp_sensortest.so
-vendor/lib64/libsynaFpSensorTestNwd.so
+vendor/lib/libbauthserver.so;DISABLE_DEPS
+vendor/lib/libbauthtzcommon.so;DISABLE_DEPS
+vendor/lib/libegis_fp_normal_sensor_test.so;DISABLE_DEPS
+vendor/lib/libgf_in_system_lib.so;DISABLE_DEPS
+vendor/lib/libqfp_sensortest.so;DISABLE_DEPS
+vendor/lib/libsynaFpSensorTestNwd.so;DISABLE_DEPS
+vendor/lib64/libbauthserver.so;DISABLE_DEPS
+vendor/lib64/libbauthtzcommon.so;DISABLE_DEPS
+vendor/lib64/libegis_fp_normal_sensor_test.so;DISABLE_DEPS
+vendor/lib64/libgf_in_system_lib.so;DISABLE_DEPS
+vendor/lib64/libqfp_sensortest.so;DISABLE_DEPS
+vendor/lib64/libsynaFpSensorTestNwd.so;DISABLE_DEPS
 
 # Firmware
 vendor/firmware/AP_AUDIO_SLSI.bin
@@ -90,26 +90,29 @@ vendor/firmware/Tfa9872.cnt
 vendor/firmware/tfadsp.bin
 
 # Gatekeeper
-vendor/lib/hw/gatekeeper.exynos7885.so
-vendor/lib64/hw/gatekeeper.exynos7885.so
+vendor/lib/hw/gatekeeper.exynos7885.so;DISABLE_DEPS
+vendor/lib64/hw/gatekeeper.exynos7885.so;DISABLE_DEPS
 
 # Keymaster 3.0 (keystore.mdfpp.so, loaded by android.hardware.keymaster@3.0-impl)
-lib/libskeymaster.so:vendor/lib/libskeymaster.so
-lib64/libskeymaster.so:vendor/lib64/libskeymaster.so
-vendor/lib/libskeymaster3device.so
-vendor/lib64/hw/keystore.mdfpp.so
-vendor/lib64/libkeymaster_helper.so
-vendor/lib64/libkeymaster_mdfpp.so
-vendor/lib64/libskeymaster3device.so
+lib/libskeymaster.so:vendor/lib/libskeymaster.so;DISABLE_DEPS
+lib64/libskeymaster.so:vendor/lib64/libskeymaster.so;DISABLE_DEPS
+vendor/lib/libskeymaster3device.so;DISABLE_DEPS
+vendor/lib64/hw/keystore.mdfpp.so;DISABLE_DEPS
+vendor/lib64/libkeymaster_helper.so;DISABLE_DEPS
+vendor/lib64/libkeymaster_mdfpp.so;DISABLE_DEPS
+vendor/lib64/libskeymaster3device.so;DISABLE_DEPS
 
 # MobiCore (Trustonic TEE)
-vendor/bin/mcDriverDaemon
+lib/vendor.trustonic.teeregistry@1.0.so:vendor/lib/vendor.trustonic.teeregistry@1.0.so;DISABLE_DEPS
+lib64/vendor.trustonic.tee@1.0.so:vendor/lib64/vendor.trustonic.tee@1.0.so;DISABLE_DEPS
+lib64/vendor.trustonic.teeregistry@1.0.so:vendor/lib64/vendor.trustonic.teeregistry@1.0.so;DISABLE_DEPS
+vendor/bin/mcDriverDaemon;DISABLE_DEPS
 vendor/etc/init/mobicore.rc
-vendor/lib/libMcClient.so
-vendor/lib64/libMcClient.so
-vendor/bin/hw/vendor.trustonic.tee@1.0-service
+vendor/lib/libMcClient.so;DISABLE_DEPS
+vendor/lib64/libMcClient.so;DISABLE_DEPS
+vendor/bin/hw/vendor.trustonic.tee@1.0-service;DISABLE_DEPS
 vendor/etc/init/vendor.trustonic.tee@1.0-service.rc
-vendor/bin/hw/vendor.trustonic.teeregistry@1.0-service
+vendor/bin/hw/vendor.trustonic.teeregistry@1.0-service;DISABLE_DEPS
 vendor/etc/init/vendor.trustonic.teeregistry@1.0-service.rc
 app/mcRegistry/ffffffff000000000000000000000004.tlbin:vendor/app/mcRegistry/ffffffff000000000000000000000004.tlbin
 app/mcRegistry/ffffffff00000000000000000000000c.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000000c.tlbin
@@ -146,16 +149,16 @@ vendor/app/mcRegistry/ffffffffd00000000000000000000045.drbin
 vendor/app/mcRegistry/fffffffff0000000000000000000001b.tlbin
 
 # Widevine (Trustonic)
-vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine;DISABLE_DEPS
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/liboemcrypto.so
-vendor/lib/libwvhidl.so
-vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/liboemcrypto.so;DISABLE_DEPS
+vendor/lib/libwvhidl.so;DISABLE_DEPS
+vendor/lib/mediadrm/libwvdrmengine.so;DISABLE_DEPS
 
 # NFC firmware
 vendor/etc/nfc/sec_s3nrn81_rfreg.bin
 vendor/firmware/nfc/sec_s3nrn81_firmware.bin
 
 # Sensors
-vendor/lib/hw/sensors.universal7885.so:vendor/lib/hw/sensors.exynos7885.so
-vendor/lib64/hw/sensors.universal7885.so:vendor/lib64/hw/sensors.exynos7885.so
+vendor/lib/hw/sensors.universal7885.so:vendor/lib/hw/sensors.exynos7885.so;DISABLE_DEPS
+vendor/lib64/hw/sensors.universal7885.so:vendor/lib64/hw/sensors.exynos7885.so;DISABLE_DEPS
