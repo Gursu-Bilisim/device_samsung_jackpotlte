@@ -34,7 +34,10 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 
 # Kernel: crDroid 15.0 (Eureka R24U) with the jackpotlte defconfig
 TARGET_KERNEL_CONFIG := exynos7885-jackpotlte_defconfig
-TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+# 4.4 takes its clang target from CROSS_COMPILE / CLANG_TRIPLE, which the
+# vendor kernel build passes only in GCC mode; the common tree sets NO_GCC.
+# Same mode crDroid 15.0 built this kernel with.
+TARGET_KERNEL_NO_GCC := false
 BOARD_KERNEL_CMDLINE := androidboot.init_fatal_reboot_target=recovery
 
 # Manifest: keymaster 3.0 (Trustonic) instead of the common keymaster 4.0
