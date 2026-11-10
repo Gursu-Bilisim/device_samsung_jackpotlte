@@ -63,6 +63,18 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
+# Runtime dependencies of the 32-bit prebuilts that nothing else
+# installs (camera, audio and keymaster HALs from 18.1 and CUK6)
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0.vendor:32 \
+    libcamera_metadata_helper:32 \
+    libexynosgscaler:32 \
+    libgui_vendor:32 \
+    libhidltransport.vendor:32 \
+    libhwbinder.vendor:32 \
+    libkeymaster4support.vendor:32 \
+    libtinycompress:32
+
 # Media
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
