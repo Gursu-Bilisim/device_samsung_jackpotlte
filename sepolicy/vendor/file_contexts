@@ -1,5 +1,5 @@
 # Block devices (jackpotlte by-name entries are upper case; the common
 # file_contexts already covers BOOT, CACHE, CPEFS, EFS, OMR, PERSISTENT,
 # RADIO, RECOVERY, SYSTEM and USERDATA)
-/dev/block/platform/13500000\.dwmmc0/by-name/VENDOR      u:object_r:vendor_block_device:s0
+/dev/block/platform/13500000\.dwmmc0/by-name/VENDOR      u:object_r:system_block_device:s0
 /dev/block/platform/13500000\.dwmmc0/by-name/CP_DEBUG    u:object_r:radio_block_device:s0
