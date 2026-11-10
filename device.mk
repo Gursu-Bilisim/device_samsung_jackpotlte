@@ -10,6 +10,15 @@ DEVICE_PATH := device/samsung/jackpotlte
 TARGET_EXYNOS7885_TEE := mobicore
 TARGET_EXYNOS7885_DEVICE_ROOTDIR := true
 
+# Files the common tree or common vendor also copy. PRODUCT_COPY_FILES
+# keeps the first entry for a destination, and values added after an
+# inherit come after the inherited ones, so these stay above the inherit
+# lines (the common a30 init.baseband.rc uses lower case by-name paths).
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/init/init.baseband.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.baseband.rc \
+    $(DEVICE_PATH)/configs/init/init.device.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.device.rc \
+    $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+
 # Inherit proprietary files setup. Listed before the common tree so that
 # for files both copy (audio firmware, configs) the jackpotlte copy wins.
 # Optional only so that kernel and boot image can be built before the blobs
@@ -42,13 +51,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     $(DEVICE_PATH)/configs/keylayout/uinput-sec-fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-sec-fp.kl
 
-# Init
-# init.baseband.rc also comes from the common vendor blobs (a30, lower case
-# partition names); this copy is listed first and wins.
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/init/init.baseband.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.baseband.rc \
-    $(DEVICE_PATH)/configs/init/init.device.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.device.rc
-
 PRODUCT_PACKAGES += \
     fstab.exynos7885 \
     init.exynos7885.rc \
@@ -74,10 +76,6 @@ PRODUCT_PACKAGES += \
     libhwbinder.vendor:32 \
     libkeymaster4support.vendor:32 \
     libtinycompress:32
-
-# Media
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 # NFC (Samsung S3NRN81)
 PRODUCT_COPY_FILES += \
