@@ -43,6 +43,7 @@ BOARD_KERNEL_CMDLINE := androidboot.init_fatal_reboot_target=recovery
 # Manifest: keymaster 3.0 (Trustonic) instead of the common keymaster 4.0
 DEVICE_MANIFEST_FILE := $(filter-out $(COMMON_PATH)/manifest.xml,$(DEVICE_MANIFEST_FILE))
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/framework_compatibility_matrix.xml
 
 # Partitions (bytes, Treble layout on this phone)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
