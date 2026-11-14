@@ -44,6 +44,10 @@ prebuilt_etc {
 // a VNDK-core library in Android 9 that AOSP no longer builds. This is the
 // AOSP VNDK v28 prebuilt (prebuilts/vndk/v28/arm64/arch-arm64-armv8-a). The
 // sensors service is 64-bit only, so the 32-bit copy is not installed.
+// The prebuilt's libhidltransport.so dependency is renamed to
+// libhidlbase_shim.so (hardware/lineage/compat), which exports the
+// gBnConstructorMap/gBsConstructorMap globals that Android 9 generated HIDL
+// code registers into and that libhidlbase no longer has.
 cc_prebuilt_library_shared {
     name: "android.frameworks.schedulerservice@1.0-vndk28",
     stem: "android.frameworks.schedulerservice@1.0",

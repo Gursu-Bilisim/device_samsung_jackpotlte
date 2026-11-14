@@ -86,6 +86,7 @@ PRODUCT_PACKAGES += \
 # Widevine (protobuf, after the extract-files rename)
 PRODUCT_PACKAGES += \
     android.frameworks.schedulerservice@1.0-vndk28 \
+    libhidlbase_shim:64 \
     android.hidl.allocator@1.0.vendor:64 \
     libhidlmemory.vendor:32 \
     libhidlmemory.vendor:64 \
