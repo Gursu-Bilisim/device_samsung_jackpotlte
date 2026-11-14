@@ -1,0 +1,4 @@
+# /efs is a link to /mnt/vendor/efs (BOARD_ROOT_EXTRA_SYMLINKS) labeled
+# efs_file. The CUK6 blobs open their files through it; without lnk_file read
+# cbd gets EACCES on /efs/nv_data.bin (not audited) and the modem never boots.
+allow { cbd rild tee } efs_file:lnk_file read;

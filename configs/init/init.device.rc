@@ -14,7 +14,7 @@ on post-fs-data
     chmod 0660 /efs/nxp/temp_cal
 
 on boot
-    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    setprop ro.bt.bdaddr_path "/mnt/vendor/efs/bluetooth/bt_addr"
     chown bluetooth bluetooth ro.bt.bdaddr_path
 
     chown system bluetooth /efs/bluetooth
