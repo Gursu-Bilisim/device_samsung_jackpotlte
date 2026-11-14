@@ -77,10 +77,12 @@ PRODUCT_PACKAGES += \
     libkeymaster4support.vendor:32 \
     libtinycompress:32
 
-# Libraries the CUK6 HALs load that were VNDK in Android 9: Trustonic TEE
-# services (libhidlmemory), camera (libpower), Widevine (protobuf, after the
+# Libraries the CUK6 HALs load that were VNDK in Android 9: sensors
+# (schedulerservice, prebuilt in Android.bp), Trustonic TEE services
+# (libhidlmemory), camera (libpower), Widevine (protobuf, after the
 # extract-files rename)
 PRODUCT_PACKAGES += \
+    android.frameworks.schedulerservice@1.0-vndk28 \
     libhidlmemory.vendor:32 \
     libhidlmemory.vendor:64 \
     libpower.vendor:32 \
