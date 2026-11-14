@@ -8,6 +8,8 @@ DEVICE_PATH := device/samsung/jackpotlte
 # TEE: jackpotlte uses Trustonic (MobiCore), not TEEGRIS.
 # Must be set before the common include, which reads it immediately.
 BOARD_SEPOLICY_TEE_FLAVOR := mobicore
+# hwc.mk runs before TARGET_ARCH is set; without this the HWC uses a 32-bit dma_addr_t and S3CFB_WIN_CONFIG fails with ENOTTY.
+BOARD_USES_DECON_64BIT_ADDRESS := true
 
 include device/samsung/exynos7885-common/BoardConfigCommon.mk
 

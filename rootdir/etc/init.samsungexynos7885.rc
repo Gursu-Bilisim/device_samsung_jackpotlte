@@ -41,7 +41,8 @@ on late-fs
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.${ro.hardware} --late
 
-#    start mobicore
+    export MC_AUTH_TOKEN_PATH /efs
+    start mobicore
 
 on post-fs
     # Allow writing to the kernel trace log.

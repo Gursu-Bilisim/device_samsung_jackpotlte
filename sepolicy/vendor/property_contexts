@@ -1,0 +1,2 @@
+# The stock (first API 25) mcDriverDaemon and keymaster use the legacy name.
+sys.mobicoredaemon.enable           u:object_r:tee_prop:s0
