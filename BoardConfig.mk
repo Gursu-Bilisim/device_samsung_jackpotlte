@@ -8,10 +8,15 @@ DEVICE_PATH := device/samsung/jackpotlte
 # TEE: jackpotlte uses Trustonic (MobiCore), not TEEGRIS.
 # Must be set before the common include, which reads it immediately.
 BOARD_SEPOLICY_TEE_FLAVOR := mobicore
-# hwc.mk runs before TARGET_ARCH is set; without this the HWC uses a 32-bit dma_addr_t and S3CFB_WIN_CONFIG fails with ENOTTY.
-BOARD_USES_DECON_64BIT_ADDRESS := true
 
 include device/samsung/exynos7885-common/BoardConfigCommon.mk
+
+# HWC: the common tree includes hwc.mk before it sets TARGET_ARCH, so hwc.mk
+# never sets USES_ARCH_ARM64. libhwc2.1 then builds decon_win_config with a
+# 32-bit dma_addr_t (888 bytes, ioctl 0x437846d1) and S3CFB_WIN_CONFIG fails
+# with ENOTTY. BOARD_USES_DECON_64BIT_ADDRESS does not help here: hwc.mk turns
+# it into a Soong variable that libhwc2.1/Android.bp never reads.
+$(call soong_config_set,exynos_hwc,USES_ARCH_ARM64,true)
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jackpotlte
