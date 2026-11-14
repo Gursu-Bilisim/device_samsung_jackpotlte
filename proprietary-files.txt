@@ -162,3 +162,7 @@ vendor/firmware/nfc/sec_s3nrn81_firmware.bin
 # Sensors
 vendor/lib/hw/sensors.universal7885.so:vendor/lib/hw/sensors.exynos7885.so;DISABLE_DEPS
 vendor/lib64/hw/sensors.universal7885.so:vendor/lib64/hw/sensors.exynos7885.so;DISABLE_DEPS
+# sensors.universal7885.so links android.frameworks.schedulerservice@1.0,
+# a VNDK 28 library that AOSP no longer builds
+lib/vndk-28/android.frameworks.schedulerservice@1.0.so:vendor/lib/android.frameworks.schedulerservice@1.0.so;DISABLE_DEPS
+lib64/vndk-28/android.frameworks.schedulerservice@1.0.so:vendor/lib64/android.frameworks.schedulerservice@1.0.so;DISABLE_DEPS

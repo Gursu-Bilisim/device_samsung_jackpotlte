@@ -1,5 +1,4 @@
 on init
-    mkdir /efs 0771 radio system
     symlink /dev/block/platform/13500000.dwmmc0/by-name/RADIO /dev/mbin0
     restorecon /dev/mbin0
 
@@ -15,8 +14,6 @@ on init
     write /sys/class/net/rmnet7/queues/rx-0/rps_cpus 6
 
 on fs
-    chown radio system /efs
-    chmod 0771 /efs
     chown radio radio sys/devices/virtual/misc/multipdp/waketime
     chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
     chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state

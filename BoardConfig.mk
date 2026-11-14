@@ -45,7 +45,15 @@ BOARD_KERNEL_CMDLINE := androidboot.init_fatal_reboot_target=recovery
 # Manifest: keymaster 3.0 (Trustonic) instead of the common keymaster 4.0
 DEVICE_MANIFEST_FILE := $(filter-out $(COMMON_PATH)/manifest.xml,$(DEVICE_MANIFEST_FILE))
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+# The touch HAL registers ITouchscreenGesture when cmd_list has singletap_enable
+# (true here) and aborts if the manifest does not declare it.
+DEVICE_MANIFEST_FILE := $(filter-out $(COMMON_PATH)/manifest_touch.xml,$(DEVICE_MANIFEST_FILE))
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_touch_tsgesture.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/framework_compatibility_matrix.xml
+
+# /efs: the common tree links it to /factory (a30). The CUK6 blobs (cbd,
+# mcDriverDaemon) read /efs, and fstab mounts EFS at /mnt/vendor/efs.
+BOARD_ROOT_EXTRA_SYMLINKS := /mnt/vendor/efs:/efs
 
 # Partitions (bytes, Treble layout on this phone)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432

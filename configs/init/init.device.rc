@@ -138,6 +138,6 @@ on fs
 
 on charger
     wait /dev/block/platform/13500000.dwmmc0/by-name/EFS
-    mount ext4 /dev/block/platform/13500000.dwmmc0/by-name/EFS /efs nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
+    mount ext4 /dev/block/platform/13500000.dwmmc0/by-name/EFS /mnt/vendor/efs nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
 
 

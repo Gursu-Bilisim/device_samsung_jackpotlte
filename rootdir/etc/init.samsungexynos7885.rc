@@ -5,7 +5,6 @@
 import /vendor/etc/init/hw/init.${ro.hardware}.usb.rc
 
 on early-init
-    mkdir /efs 0771 radio system
     mkdir /mnt/vendor/efs 0771 radio system
     mkdir /mnt/vendor/cpefs 0771 radio system
     mkdir /mnt/vendor/persist 0771 system system
@@ -408,9 +407,6 @@ on boot
 
 on fs
     mount_all /vendor/etc/fstab.${ro.hardware} --early
-    # We need to seperate mounting SEC_EFS partition from fstab file due to GSI image loading case
-    wait /dev/block/platform/13500000.dwmmc0/by-name/EFS
-    mount ext4 /dev/block/platform/13500000.dwmmc0/by-name/EFS /efs nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
 
     mount none /mnt/vendor/cpefs /cpefs bind
     restorecon_recursive /mnt/vendor/efs
