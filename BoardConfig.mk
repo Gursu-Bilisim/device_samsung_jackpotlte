@@ -18,6 +18,12 @@ include device/samsung/exynos7885-common/BoardConfigCommon.mk
 # it into a Soong variable that libhwc2.1/Android.bp never reads.
 $(call soong_config_set,exynos_hwc,USES_ARCH_ARM64,true)
 
+# libhwjpeg: the SC02L libexynoscamera.so (Android 9) links the one-argument
+# ExynosJpegEncoderForCamera(bool) constructor. libhwjpeg builds the
+# (bool, unsigned int) one when HWJPEG_ANDROID_VERSION >= 10, and defaults to
+# 13; the common BOARD_HWJPEG_ANDROID_VERSION is not read by anything.
+$(call soong_config_set,libhwjpeg,HWJPEG_ANDROID_VERSION,9)
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jackpotlte
 
