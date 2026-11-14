@@ -60,10 +60,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.samsungexynos7885:$(TARGET_COPY_OUT_RAMDISK)/vendor/etc/fstab.samsungexynos7885
 
-# Keymaster 3.0 (loads keystore.mdfpp.so from the vendor blobs)
+# KeyMint: AOSP software implementation. The Trustonic keymaster TA refuses
+# key derivation on this phone ("tz_check_integrity: Device is compromised",
+# then tz_rek_kdf() failed); the bootloader reports warranty_bit=1. With
+# keymaster 3.0, LockSettingsService fails importKey and system_server
+# crashes on every boot; without any keymaster HAL keystore2 aborts.
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+    android.hardware.security.keymint-service
 
 # Runtime dependencies of the 32-bit prebuilts that nothing else
 # installs (camera, audio and keymaster HALs from 18.1 and CUK6)

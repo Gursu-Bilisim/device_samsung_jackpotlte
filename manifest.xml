@@ -1,6 +1,6 @@
 <!-- Copy of device/samsung/exynos7885-common/manifest.xml (fifteen, c5c3d6c).
-     jackpotlte: keymaster 3.0 (Trustonic, keystore.mdfpp.so) instead of 4.0;
-     Trustonic TEE and Widevine HALs at the end. -->
+     jackpotlte: no keymaster entry (the software KeyMint service declares its
+     own fragment, see device.mk); Trustonic TEE and Widevine HALs at the end. -->
 <manifest version="1.0" type="device" target-level="5">
     <hal format="hidl">
         <name>android.hardware.audio</name>
@@ -72,15 +72,6 @@
         <version>2.1</version>
         <interface>
             <name>IMapper</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.keymaster</name>
-        <transport>hwbinder</transport>
-        <version>3.0</version>
-        <interface>
-            <name>IKeymasterDevice</name>
             <instance>default</instance>
         </interface>
     </hal>
