@@ -82,8 +82,8 @@ PRODUCT_PACKAGES += \
 
 # Libraries the CUK6 HALs load that were VNDK in Android 9: sensors
 # (schedulerservice, prebuilt in Android.bp), Trustonic TEE services
-# (libhidlmemory, android.hidl.allocator@1.0), camera (libpower), audio
-# (libprocessgroup), Widevine (protobuf, after the extract-files rename)
+# (libhidlmemory, android.hidl.allocator@1.0), camera (libpower), Widevine
+# (protobuf, after the extract-files rename)
 PRODUCT_PACKAGES += \
     android.frameworks.schedulerservice@1.0-vndk28 \
     libhidlbase_shim:64 \
@@ -91,7 +91,6 @@ PRODUCT_PACKAGES += \
     libhidlmemory.vendor:32 \
     libhidlmemory.vendor:64 \
     libpower.vendor:32 \
-    libprocessgroup.vendor:32 \
     libprotobuf-cpp-lite-3.9.1-vendorcompat:32
 
 # NFC (Samsung S3NRN81)

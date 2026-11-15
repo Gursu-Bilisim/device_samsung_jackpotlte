@@ -61,9 +61,19 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-        vendor/lib/hw/audio.primary.exynos7885.so)
-            # Same renames as the common audio blobs
-            "${PATCHELF}" --replace-needed libaudioroute.so libaudioroute.exynos7885.so "${2}"
+        lib/hw/audio.primary.universal7885.so | vendor/lib/hw/audio.primary.exynos7885.so)
+            # Stock libaudioroute under its own name; tinyalsa from the common vendor
+            "${PATCHELF}" --replace-needed libaudioroute.so libaudioroute.universal7885.so "${2}"
+            "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
+            ;;
+        lib/libaudioroute.so | vendor/lib/libaudioroute.universal7885.so)
+            # Same length path; the stock build kept mixer_paths.xml in /system/etc
+            sed -i 's|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g' "${2}"
+            "${PATCHELF}" --set-soname libaudioroute.universal7885.so "${2}"
+            "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
+            ;;
+        lib/libaboxpcmdump.so | vendor/lib/libaboxpcmdump.so)
+            sed -i 's|/system/etc/abox_debug.xml|/vendor/etc/abox_debug.xml|g' "${2}"
             "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
             ;;
         vendor/lib/libwvhidl.so | vendor/lib/mediadrm/libwvdrmengine.so)

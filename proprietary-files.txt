@@ -15,10 +15,19 @@ vendor/etc/audio_policy_volumes.xml
 vendor/etc/default_volume_tables.xml
 
 # Audio HAL
-# Source: exynos7885-dev/proprietary_vendor_samsung_jackpotlte (lineage-18.1),
-# from A750FNXXU5CVG2; A530FXXULCUK6 has no audio.primary.exynos7885.so.
-# Uses the common libaudioroute.exynos7885 / libtinyalsa.exynos7885 (blob_fixup)
-vendor/lib/hw/audio.primary.exynos7885.so;DISABLE_DEPS
+# Stock A530FXXULCUK6 HAL, which the stock build loads from the system
+# partition as audio.primary.universal7885.so. It matches this phone's ABOX
+# PCM layout; the A750F HAL used before (lineage-18.1 list) opened pcmC0D9p
+# for the voice call TX, which is a capture device here, and the modem
+# crashed when a call connected. The stock libaudioroute reads the CUK6
+# mixer_paths.xml as is (the common one rejects path names with
+# master/slave). Other Samsung audio libraries come from the common vendor;
+# the HAL uses no symbol from the stock ones that those lack.
+lib/hw/audio.primary.universal7885.so:vendor/lib/hw/audio.primary.exynos7885.so;DISABLE_DEPS
+lib/libaudioroute.so:vendor/lib/libaudioroute.universal7885.so;DISABLE_DEPS
+lib/libaboxpcmdump.so:vendor/lib/libaboxpcmdump.so;DISABLE_DEPS
+vendor/lib/libdatamod.so;DISABLE_DEPS
+vendor/lib/libvndsecril-client.so;DISABLE_DEPS
 
 # Camera
 # Source: exynos7885-dev/proprietary_vendor_samsung_jackpotlte (lineage-18.1),
