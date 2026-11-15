@@ -65,6 +65,8 @@ function blob_fixup() {
             # Stock libaudioroute under its own name; tinyalsa from the common vendor
             "${PATCHELF}" --replace-needed libaudioroute.so libaudioroute.universal7885.so "${2}"
             "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
+            # set_sched_policy moved from libcutils to libprocessgroup after Android 9
+            "${PATCHELF}" --add-needed libprocessgroup.so "${2}"
             ;;
         lib/libaudioroute.so | vendor/lib/libaudioroute.universal7885.so)
             # Same length path; the stock build kept mixer_paths.xml in /system/etc
