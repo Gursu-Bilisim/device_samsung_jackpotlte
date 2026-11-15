@@ -11,3 +11,10 @@ allow { cbd rild tee } efs_file:lnk_file read;
 allow tee mnt_vendor_file:dir { getattr search };
 allow tee efs_file:dir rw_dir_perms;
 allow tee efs_file:file create_file_perms;
+
+# The Trustonic gatekeeper HAL (TlcTeeGatekeeper) keeps its context files
+# next to the TEE storage (/efs/TEE/gk_context_*) and opens them itself.
+allow hal_gatekeeper_default mnt_vendor_file:dir { getattr search };
+allow hal_gatekeeper_default efs_file:lnk_file read;
+allow hal_gatekeeper_default efs_file:dir rw_dir_perms;
+allow hal_gatekeeper_default efs_file:file create_file_perms;
