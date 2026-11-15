@@ -5,7 +5,8 @@ allow { cbd rild tee } efs_file:lnk_file read;
 
 # mcDriverDaemon keeps the Trustonic secure storage (/efs/TEE/Store_1.tf,
 # gk_context_*) in EFS and opens it read-write; the SLSI policy only grants
-# read on efs_file. Without this every trustlet session (gatekeeper,
+# read on efs_file and no search on /mnt/vendor. Without this every trustlet session (gatekeeper,
 # fingerprint) fails and no lock screen credential can be enrolled.
+allow tee mnt_vendor_file:dir { getattr search };
 allow tee efs_file:dir rw_dir_perms;
 allow tee efs_file:file create_file_perms;
