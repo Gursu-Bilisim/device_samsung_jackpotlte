@@ -69,14 +69,11 @@ function blob_fixup() {
             "${PATCHELF}" --add-needed libprocessgroup.so "${2}"
             ;;
         lib/libaudioroute.so | vendor/lib/libaudioroute.universal7885.so)
-            # Same length path; the stock build kept mixer_paths.xml in /system/etc
+            # Same length paths; the stock build kept the mixer files in /system/etc
             sed -i 's|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g' "${2}"
+            sed -i 's|/system/etc/mixer_gains.xml|/vendor/etc/mixer_gains.xml|g' "${2}"
             "${PATCHELF}" --set-soname libaudioroute.universal7885.so "${2}"
             "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
-            ;;
-        etc/mixer_paths.xml | vendor/etc/mixer_paths.xml)
-            # The CUK6 file includes the gain table from /system/etc
-            sed -i 's|/system/etc/mixer_gains.xml|/vendor/etc/mixer_gains.xml|g' "${2}"
             ;;
         lib/libaboxpcmdump.so | vendor/lib/libaboxpcmdump.so)
             sed -i 's|/system/etc/abox_debug.xml|/vendor/etc/abox_debug.xml|g' "${2}"
