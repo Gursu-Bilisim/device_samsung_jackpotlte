@@ -68,6 +68,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint-service
 
+# Audio: wrapper around the stock Android 9 HAL (audio/)
+PRODUCT_PACKAGES += \
+    audio.primary.exynos7885
+
 # Runtime dependencies of the 32-bit prebuilts that nothing else
 # installs (camera, audio and keymaster HALs from 18.1 and CUK6)
 PRODUCT_PACKAGES += \

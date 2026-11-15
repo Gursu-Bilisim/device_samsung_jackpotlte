@@ -22,8 +22,11 @@ vendor/etc/default_volume_tables.xml
 # crashed when a call connected. The stock libaudioroute reads the CUK6
 # mixer_paths.xml as is (the common one rejects path names with
 # master/slave). Other Samsung audio libraries come from the common vendor;
-# the HAL uses no symbol from the stock ones that those lack.
-lib/hw/audio.primary.universal7885.so:vendor/lib/hw/audio.primary.exynos7885.so;DISABLE_DEPS
+# the HAL uses no symbol from the stock ones that those lack. It is built
+# against the Android 9 audio headers, so it is installed under another name
+# and loaded by the audio.primary.exynos7885 wrapper (audio/), which converts
+# the structures that changed since.
+lib/hw/audio.primary.universal7885.so:vendor/lib/hw/audio.stock.exynos7885.so;DISABLE_DEPS
 lib/libaudioroute.so:vendor/lib/libaudioroute.universal7885.so;DISABLE_DEPS
 lib/libaboxpcmdump.so:vendor/lib/libaboxpcmdump.so;DISABLE_DEPS
 vendor/lib/libdatamod.so;DISABLE_DEPS

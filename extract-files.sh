@@ -61,7 +61,9 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-        lib/hw/audio.primary.universal7885.so | vendor/lib/hw/audio.primary.exynos7885.so)
+        lib/hw/audio.primary.universal7885.so | vendor/lib/hw/audio.stock.exynos7885.so)
+            # Loaded by path from the audio.primary.exynos7885 wrapper
+            "${PATCHELF}" --set-soname audio.stock.exynos7885.so "${2}"
             # Stock libaudioroute under its own name; tinyalsa from the common vendor
             "${PATCHELF}" --replace-needed libaudioroute.so libaudioroute.universal7885.so "${2}"
             "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
@@ -73,6 +75,10 @@ function blob_fixup() {
             sed -i 's|/system/etc/mixer_paths.xml|/vendor/etc/mixer_paths.xml|g' "${2}"
             "${PATCHELF}" --set-soname libaudioroute.universal7885.so "${2}"
             "${PATCHELF}" --replace-needed libtinyalsa.so libtinyalsa.exynos7885.so "${2}"
+            ;;
+        etc/mixer_paths.xml | vendor/etc/mixer_paths.xml)
+            # The CUK6 file includes the gain table from /system/etc
+            sed -i 's|/system/etc/mixer_gains.xml|/vendor/etc/mixer_gains.xml|g' "${2}"
             ;;
         lib/libaboxpcmdump.so | vendor/lib/libaboxpcmdump.so)
             sed -i 's|/system/etc/abox_debug.xml|/vendor/etc/abox_debug.xml|g' "${2}"

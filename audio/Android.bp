@@ -1,0 +1,20 @@
+//
+// SPDX-FileCopyrightText: 2026 Gursu Bilisim
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Wrapper around the stock Android 9 audio HAL (audio.stock.exynos7885.so),
+// see audio_hw_shim.c. The audio service is 32-bit only.
+cc_library_shared {
+    name: "audio.primary.exynos7885",
+    relative_install_path: "hw",
+    vendor: true,
+    compile_multilib: "32",
+    srcs: ["audio_hw_shim.c"],
+    header_libs: ["libhardware_headers"],
+    shared_libs: ["liblog"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
