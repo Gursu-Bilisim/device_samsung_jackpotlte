@@ -1,0 +1,3 @@
+# Sensor hub IIO devices; the SLSI policy only labels the /sys/bus/iio/devices
+# links, so the device directories behind them stay generic sysfs.
+genfscon sysfs /devices/platform/13980000.spi/spi_master/spi4/spi4.0/iio:device u:object_r:sysfs_iio:s0
