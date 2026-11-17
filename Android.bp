@@ -63,3 +63,23 @@ cc_prebuilt_library_shared {
         },
     },
 }
+
+// Widevine (libwvhidl.so, libwvdrmengine.so from CUK6) was built against the
+// Android 9 VNDK protobuf and needs symbols the 3.9.1 build no longer has
+// (google::protobuf::internal::empty_string_). This is the AOSP VNDK v28
+// prebuilt (prebuilts/vndk/v28/arm64/arch-arm-armv8-a), soname set to
+// libprotobuf-cpp-lite-v28.so; extract-files.sh points the blobs at it.
+cc_prebuilt_library_shared {
+    name: "libprotobuf-cpp-lite-v28",
+    vendor: true,
+    compile_multilib: "32",
+    check_elf_files: false,
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: ["prebuilts/vndk-28/arm/libprotobuf-cpp-lite-v28.so"],
+        },
+    },
+}

@@ -87,9 +87,9 @@ function blob_fixup() {
         vendor/lib/libwvhidl.so | vendor/lib/mediadrm/libwvdrmengine.so)
             # Same shim the common (a30) Widevine blobs get
             "${PATCHELF}" --add-needed libcrypto_shim.so "${2}"
-            # Android 9 VNDK protobuf to the 3.9.1 build (universal7880 and
-            # universal8890 move these blobs to a 3.9.1 build as well)
-            "${PATCHELF}" --replace-needed libprotobuf-cpp-lite.so libprotobuf-cpp-lite-3.9.1.so "${2}"
+            # Android 9 VNDK protobuf, prebuilt as libprotobuf-cpp-lite-v28
+            # (Android.bp); the 3.9.1 build lacks internal::empty_string_
+            "${PATCHELF}" --replace-needed libprotobuf-cpp-lite.so libprotobuf-cpp-lite-v28.so "${2}"
             ;;
     esac
 }
