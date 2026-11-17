@@ -5,6 +5,9 @@
 # /data uses file-based encryption, policy v1: the 4.4 kernel has ext4/f2fs
 # encryption but neither the v2 key ioctls nor dm-default-key, so there is no
 # metadata encryption. The keys are protected by the software KeyMint.
+# /data is latemount so that the "mount_all --late" in late-fs mounts it: init
+# only creates the "fscrypt" session keyring that vold needs for v1 keys when
+# that call (not "--early", whose result it ignores) reports file encryption.
 #
 # noauto_da_alloc is left out of /data, /metadata and /cache on purpose: with the stock kernel's writeback
 # defaults it left freshly written files empty after a watchdog reset
@@ -18,8 +21,8 @@
 /dev/block/platform/13500000.dwmmc0/by-name/OMR         /metadata        ext4   noatime,nosuid,nodev,discard,journal_checksum,data=ordered,errors=panic   wait,first_stage_mount,formattable,check
 
 /dev/block/platform/13500000.dwmmc0/by-name/CACHE       /cache           ext4   nosuid,nodev,noatime,barrier=1                            wait,check
-/dev/block/platform/13500000.dwmmc0/by-name/USERDATA    /data            ext4   nosuid,nodev,noatime,barrier=1,discard                    wait,check,reservedsize=128M,fileencryption=aes-256-xts:aes-256-cts:v1
-/dev/block/platform/13500000.dwmmc0/by-name/USERDATA    /data            f2fs   nosuid,nodev,noatime,discard                              wait,check,reservedsize=128M,fileencryption=aes-256-xts:aes-256-cts:v1
+/dev/block/platform/13500000.dwmmc0/by-name/USERDATA    /data            ext4   nosuid,nodev,noatime,barrier=1,discard                    latemount,wait,check,reservedsize=128M,fileencryption=aes-256-xts:aes-256-cts:v1
+/dev/block/platform/13500000.dwmmc0/by-name/USERDATA    /data            f2fs   nosuid,nodev,noatime,discard                              latemount,wait,check,reservedsize=128M,fileencryption=aes-256-xts:aes-256-cts:v1
 
 /dev/block/platform/13500000.dwmmc0/by-name/EFS         /mnt/vendor/efs  ext4   noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic   wait,check
 /dev/block/platform/13500000.dwmmc0/by-name/CPEFS       /mnt/vendor/cpefs ext4  noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic   wait,check,nofail
