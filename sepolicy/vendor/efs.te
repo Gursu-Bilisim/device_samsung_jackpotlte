@@ -20,8 +20,9 @@ allow hal_gatekeeper_default efs_file:dir rw_dir_perms;
 allow hal_gatekeeper_default efs_file:file create_file_perms;
 
 # The Trustonic Widevine OEMCrypto (liboemcrypto.so) reads the device keybox
-# from /efs/cpk/wv.keys; the common policy allows cpk_efs_file but not the
-# /efs link or /mnt/vendor. Without these OEMCrypto logs "Fail to open
-# widevine keybox" and Widevine falls back to L3.
+# from /efs/wv.keys (on this phone; it also tries /efs/cpk/wv.keys, which the
+# common policy covers). Without these OEMCrypto logs "Fail to open widevine
+# keybox" and Widevine falls back to L3.
 allow hal_drm_widevine efs_file:lnk_file read;
 allow hal_drm_widevine mnt_vendor_file:dir search;
+allow hal_drm_widevine efs_file:file r_file_perms;
