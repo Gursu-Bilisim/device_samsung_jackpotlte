@@ -115,17 +115,16 @@ vendor/lib64/libkeymaster_mdfpp.so;DISABLE_DEPS
 vendor/lib64/libskeymaster3device.so;DISABLE_DEPS
 
 # MobiCore (Trustonic TEE)
-lib/vendor.trustonic.teeregistry@1.0.so:vendor/lib/vendor.trustonic.teeregistry@1.0.so;DISABLE_DEPS
-lib64/vendor.trustonic.tee@1.0.so:vendor/lib64/vendor.trustonic.tee@1.0.so;DISABLE_DEPS
-lib64/vendor.trustonic.teeregistry@1.0.so:vendor/lib64/vendor.trustonic.teeregistry@1.0.so;DISABLE_DEPS
+# Clients (gatekeeper, fingerprint, Widevine) reach the TEE through
+# libMcClient and mcDriverDaemon. The stock vendor.trustonic.tee@1.0 and
+# teeregistry@1.0 HIDL services are left out: nothing in vendor links or
+# names their interfaces, and their Android 9 interface libraries register
+# servers in gBnConstructorMap, which current libhidlbase no longer reads, so
+# they only crash-looped.
 vendor/bin/mcDriverDaemon;DISABLE_DEPS
 vendor/etc/init/mobicore.rc
 vendor/lib/libMcClient.so;DISABLE_DEPS
 vendor/lib64/libMcClient.so;DISABLE_DEPS
-vendor/bin/hw/vendor.trustonic.tee@1.0-service;DISABLE_DEPS
-vendor/etc/init/vendor.trustonic.tee@1.0-service.rc
-vendor/bin/hw/vendor.trustonic.teeregistry@1.0-service;DISABLE_DEPS
-vendor/etc/init/vendor.trustonic.teeregistry@1.0-service.rc
 app/mcRegistry/ffffffff000000000000000000000004.tlbin:vendor/app/mcRegistry/ffffffff000000000000000000000004.tlbin
 app/mcRegistry/ffffffff00000000000000000000000c.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000000c.tlbin
 app/mcRegistry/ffffffff00000000000000000000000d.tlbin:vendor/app/mcRegistry/ffffffff00000000000000000000000d.tlbin
